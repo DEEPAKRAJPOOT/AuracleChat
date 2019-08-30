@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Hello world</title>
+       <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
+       <link href="http://mudaribapp.com/AuracleChat/style.css" type="text/css" rel="stylesheet">
+       <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+       <style>
+            .input_msg_write{position: relative;}
+            .input_msg_write>label{position: absolute; top: 13px; left: 6px; margin-bottom: 0px;}
+           .input_msg_write input{padding-left: 30px;}
+       </style>
+   </head>
+   
+   <body>
+       <div class="container">
+<h3 class=" text-center">Auracle chat</h3>
+<div class="messaging">
+      <div class="inbox_msg">
+        <div class="inbox_people">
+          <div class="headind_srch">
+            <div class="recent_heading">
+              <h4>Recent</h4>
+            </div>
+            <div class="srch_bar">
+              <div class="stylish-input-group">
+                <input type="text" class="search-bar"  placeholder="Search" >
+                <span class="input-group-addon">
+                <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                </span> </div>
+            </div>
+          </div>
+          <div class="inbox_chat">
+            <div class="chat_list active_chat">
+              <div class="chat_people">
+                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_ib">
+                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                  <p>Test, which is a new approach to have all solutions 
+                    astrology under one roof.</p>
+                </div>
+              </div>
+            </div>
+            <div class="chat_list">
+              <div class="chat_people">
+                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_ib">
+                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                  <p>Test, which is a new approach to have all solutions 
+                    astrology under one roof.</p>
+                </div>
+              </div>
+            </div>
+            <div class="chat_list">
+              <div class="chat_people">
+                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_ib">
+                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                  <p>Test, which is a new approach to have all solutions 
+                    astrology under one roof.</p>
+                </div>
+              </div>
+            </div>
+            <div class="chat_list">
+              <div class="chat_people">
+                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_ib">
+                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                  <p>Test, which is a new approach to have all solutions 
+                    astrology under one roof.</p>
+                </div>
+              </div>
+            </div>
+            <div class="chat_list">
+              <div class="chat_people">
+                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_ib">
+                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                  <p>Test, which is a new approach to have all solutions 
+                    astrology under one roof.</p>
+                </div>
+              </div>
+            </div>
+            <div class="chat_list">
+              <div class="chat_people">
+                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_ib">
+                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                  <p>Test, which is a new approach to have all solutions 
+                    astrology under one roof.</p>
+                </div>
+              </div>
+            </div>
+            <div class="chat_list">
+              <div class="chat_people">
+                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_ib">
+                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                  <p>Test, which is a new approach to have all solutions 
+                    astrology under one roof.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mesgs">
+          <div class="msg_history">
+            
+          </div>
+          <div class="type_msg">
+            <div class="input_msg_write">
+                <label for="custom_attach">
+                    <i class="fa fa-paperclip" ></i>
+                </label>
+                 <input type="file" class="d-none" id="custom_attach" value="">
+              <input type="text" class="write_msg" value="" placeholder="Type a message" id="message" />
+              <button class="msg_send_btn" type="button" id="sendButton"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div></div>
+       <script src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
+       <script>
+  var socket = io.connect();
+  var url = window.location.pathname;
+  var id = url.substring(url.lastIndexOf('/') + 1);
+  var receiverId = id;
+  
+  $(document).ready(function(){
+      
+      
+      var senderId = 169;
+      socket.emit('init',{"userId":receiverId,"receiverId":receiverId},function(mdata){
+                  console.log(mdata)
+              });
+  });
+  
+//   $(document).ready(function(){
+     
+//      let userID = 234;
+//      let sendData = {"userID":userID};
+    
+//     socket.emit("getAllUser",sendData,function(mdata){
+//           console.log(mdata); 
+//         })
+      
+//   });
+  
+  $(document).ready(function(){
+     
+     let messageData = {"senderId":325,"receiverId":228,"messageId":2678};
+     
+     socket.emit("readAllMessage",messageData,function(mdata){
+         console.log(mdata); 
+     });
+     
+  });
+  
+//   $(document).ready(function(){
+     
+//      let messageData = {"senderId":"228","receiverId":"247"};
+//      socket.emit("getAllUnreadCount",messageData,function(mdata){
+//          console.log(mdata); 
+//      });
+//   });
+
+//   $(document).ready(function(){
+//      let userData = {"messageId":707,"receiverId":228,"senderId":234};
+//      socket.emit("getAllMessages",userData,function(mdata){
+//          console.log(mdata);
+//      })
+//   });
+  
+  $('body').on('click','#sendButton',function(){
+      
+      var message = $('#message').val();
+      if(message !== '')
+        {
+                      var message = $('#message').val();
+                      
+                      var senderId = 169;
+                      
+                      var senddata = {"url":"","message":message,"type":1,"senderId":receiverId,"receiverId":senderId,"parentId":0};
+                      socket.emit('sendMessage', senddata, function(mdata){
+                          console.log(mdata);
+                      });
+            
+        }else{
+            
+          var formData = new FormData(); 
+          formData.append('type','image');
+          formData.append('image', $('#custom_attach')[0].files[0]);
+           
+           
+          $.ajax({
+                    type:'POST',
+                    url:'http://spicaworks.com.md-94.webhostbox.net/FindingOona/api/uploadChatImage',
+                    data:formData,
+                    dataType: "JSON",
+                    async: false,
+                  cache: false,
+                  contentType: false,
+                  enctype: 'multipart/form-data',
+                  processData: false,
+                    success:function(data){
+                        
+                        
+                        var url = data.data;
+                        
+                        
+                        var senderId = 171;
+                      
+                        var senddata = {"url":url,"message":"","type":2,"senderId":senderId,"receiverId":169};
+                        
+                        socket.emit('sendMessage', senddata, function(mdata){
+                          console.log(mdata);
+                        });
+                    }
+                });
+           
+            
+        }
+      
+  });
+  
+//   socket.on("receiveMessage", function(mdata){
+//           console.log(mdata);
+//       });
+  
+</script>
+       </body>
+</html>
